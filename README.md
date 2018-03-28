@@ -1,0 +1,1 @@
+#Rakendusserverite halduse aine skriptid
