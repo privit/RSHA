@@ -1,0 +1,22 @@
+#!/bin/bash
+#
+if [ $# -ne 1 ]; then
+	echo "kasutusjuhend: $0 failinimi"
+else
+failinimi=$1
+
+if [ -f $failinimi -a -r $failinimi ]; then
+echo " fail OK "
+for rida in $(cat $failinimi)
+
+do
+
+kasutajanimi=$(echo "$rida" | cut -f1 -d:)
+sh kasutaja_lisamine $kasutajanimi
+echo "rida" | chpasswd
+
+done
+else
+echo "probleem failiga $failinimi"
+fi
+fi
