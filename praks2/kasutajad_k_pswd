@@ -1,0 +1,15 @@
+#!/bin/bash
+
+#
+kasutajad=$1
+paroolid=$2
+
+
+for kasutaja in $(paste -d ":" $kasutajad $paroolid)
+do
+nimi=$( echo $kasutaja | cut -f1 -d":")
+
+echo $nimi
+echo $kasutaja | chpasswd
+done
+
