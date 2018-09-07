@@ -1,0 +1,18 @@
+#!/bin/bash
+#
+if [ $# -ne 1 ]; then
+	echo "kasutusjuhend: $0 failinimi"
+else
+failinimi=$1
+
+if [ -f $failinimi -a -r $failinimi ]; then
+echo " fail OK "
+for nimi in $(cat $failinimi)
+do
+sh kasutaja_lisamine $nimi
+
+done
+else
+echo "probleem failiga $failinimi"
+fi
+fi
