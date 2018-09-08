@@ -1,0 +1,19 @@
+#!/bin/bash
+for kasutaja in $(ls /home)
+do 	
+ls -la /home/$kasutaja | grep '\.my\.cnf' > /dev/null
+kontroll=$?
+
+if [ $kontroll -eq 1 ]; then
+	user=$(stat -c '%U' /home/$kasutaja)
+	grupp=$(stat -c '%G' /home/$kasutaja)
+if [ "$user" = "root" ] && [ "$grupp" = "root" ]; then
+continue
+else
+echo "fail puudub $kasutaja kasutajal"
+sh lisa_db $kasutaja
+fi
+else
+echo "$kasutaja on korras"
+fi 
+done 

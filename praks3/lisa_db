@@ -1,0 +1,19 @@
+#!/bin/bash
+kasutaja=$1
+parool=$(pwgen 8 1)
+
+# mysql käsud
+mysql -e "CRATE DATABASE ${kasutaja};"
+mysql -e "CREATE USER ${kasutaja}@localhost IDENTFIED BY '${parool}';"
+mysql -e "GRANT ALL PRIVILEGES ON ${kasutaja}. * TO '${kasutaja}'@'localhost';"
+mysql -e "FLUSH PRIVILEGERS;"
+
+#konfi  loomine
+toch /home/$kasutaja/.my.cnt
+echo "[client]
+user = $kasutaja
+password = $parool
+host = loacalhost" > /home/$kasutaja/.my.cnf
+chmod 0600 /home/$kasutaja/ .my.cnf
+chown -R $kastaja:user /home/$kastuja/
+ 
