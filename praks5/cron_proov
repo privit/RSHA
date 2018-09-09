@@ -15,4 +15,4 @@ nr=`date |awk -F" " '{ print $4 }' | awk -F: '{ print $2 }'`;
 ####echo kösk ühel real
 
 
-echo "Tanane kuupaev on ${kuu} ${kpaev} ${aasta}. Kell on ${kellaaeg}. See on ${riik} aeg."
+echo "Tanane kuupaev on ${kuu} ${kpaev} ${aasta}. Kell on ${kellaaeg}. See on ${riik} aeg."  >/home/priit/temp/proov_cron${nr}.txt
