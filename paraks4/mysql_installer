@@ -1,0 +1,15 @@
+#!/bin/bash
+
+#mysql install script
+
+#kontroll
+mysql=$(dpkg -qury -W -f='$(status)' mysql 2>/dev/null | grep -c "ok installed")
+ #käsutulemus kas 0 või 1
+#kui = 0 siis tuleb paigaldada
+if [ $mysql -eq 0 ]; then
+echo "paigaldame mysql"
+apt-get install -y mysql-server;
+elif [ $mysql -eq 1 ]; then
+echo "myaql paigaldatud!"
+
+fi
