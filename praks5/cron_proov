@@ -1,0 +1,18 @@
+#!/bin/bash
+
+
+
+kokku=`date`;
+kuu=`date | awk -F" " '{ print $2 }'`;
+kpaev=`date | awk -F" " '{ print $3 }'`;
+paev=`date |awk -F" " '{ print $1 }'`;
+kellaaeg=`date | awk -F" " '{ print $4 }'`;
+riik=`date | awk -F" " '{ print $5 }'`;
+aasta=`date | awk -F" " '{ print $6 }'`;
+nr=`date |awk -F" " '{ print $4 }' | awk -F: '{ print $2 }'`;
+
+
+####echo kösk ühel real
+
+
+echo "Tanane kuupaev on ${kuu} ${kpaev} ${aasta}. Kell on ${kellaaeg}. See on ${riik} aeg."
