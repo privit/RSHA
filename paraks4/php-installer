@@ -1,0 +1,15 @@
+#!/bin/bash
+
+#php install script
+
+#kontroll
+php=$(dpkg -qury -W -f='$(status)'  php5-msql  2>/dev/null | grep -c "ok installed")
+ #käsutulemus kas 0 või 1
+#kui = 0 siis tuleb paigaldada
+if [ $php -eq 0 ]; then
+echo "paigaldame php5"
+apt-get install -y php5-mysql;
+elif [ $php -eq 1 ]; then
+echo "php5 paigladataud!"
+
+fi
